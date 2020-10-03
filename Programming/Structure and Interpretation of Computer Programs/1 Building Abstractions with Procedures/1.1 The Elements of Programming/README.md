@@ -19,18 +19,46 @@ For now we will focus on rules for building procedures, and use only simple data
 
 Here is a primitive expression that represents a number:
 
-    486
+```scheme
+486
+```
 
 And here is an expression that represents a primitive procedure:
 
-    +
+```scheme
++
+```
 
 A _combination_ is a compound expression formed by delimiting a list of expressions within parenthesis in order to denote procedure application. The list is arranged in _prefix notation_, meaning that the left-most element is the operator and the remaining elements operands. For example:
 
-    (+ 137 349)
+```scheme
+(+ 137 349)
+```
 
 Prefix notation allows for _nesting_ of combinations, that is, using combinations as elements in combinations:
 
-    (+ (* 3 5) (- 10 6))
+```scheme
+(+ (* 3 5) (- 10 6))
+```
 
 So we see that it is trivial to build complex expressions out of simple ones.
+
+
+
+## 1.1.2 Naming and the Environment
+
+As stated above, we need a means of abstraction. This is done by naming _variables_ whose _values_ are computational objects. We can do this with `define`:
+
+```scheme
+(define size 2)
+```
+
+This causes the interpreter to associate the value `2` with the name `size`. It follows that we can do this with more complex expressions:
+
+```scheme
+(define pi 3.14159)
+(define radius 10)
+(define circumference (* 2 pi radius))
+```
+
+Note that in order for these name-value associations to be defined and retrieved, the interpreter must keep a memory of them. This is referred to as the _environment_.
