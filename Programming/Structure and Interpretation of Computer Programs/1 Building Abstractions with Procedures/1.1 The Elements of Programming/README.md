@@ -70,3 +70,33 @@ The interpreter follows a procedure for evaluating a combination:
 Notice that the first step in evaluating calls for an evaluation. This is the procedure calling itself, which is referred to as _recursion_. Recursion allows us to break break down a complex combination into its primitive expressions (numbers, operators, names whose values are determined by the environment).
 
 Notice also that this evaluation procedure does not apply to `define`, which is a definition rather than a combination. `define` is an example of a _special form_; each special form has its own evaluation procedure. The different expressions and their various evaluation rules make up the _syntax_ of a programming language.
+
+## 1.1.4 Compound Procedures
+
+To recap, we have described some ways of implementing the three mechanisms of a powerful programming language:
+
+- Numbers and operators are primitive data and procedures
+
+- Operations can be combined via nesting of combinations
+
+- Abstraction is provided by associating names with values
+
+Another way of implementing means of abstraction is by giving operations themselves names to refer to them by. This is called a _procedure definition_. For example:
+
+```scheme
+(define (square x) (* x x))
+```
+
+Here we `define` a procedure with the *name* `square`, whose only *formal parameter* is `x` and whose *body* is the combination `(* x x)`. This procedure can now be used as an operation:
+
+```scheme
+(square 21)
+```
+
+Of course, we could now used `square` as an operator in the body of another procedure definition if we like:
+
+```scheme
+(define (sum-of-squares x y) (+ (square x) (square y)))
+```
+
+This means of abstraction is far more powerful, as we will soon see.
