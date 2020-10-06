@@ -67,7 +67,7 @@ The interpreter follows a procedure for evaluating a combination:
 
 2. Apply the procedure of the operator subexpression to values of the evaluated operand subexpressions
 
-Notice that the first step in evaluating calls for an evaluation. This is the procedure calling itself, which is referred to as _recursion_. Recursion allows us to break break down a complex combination into its primitive expressions (numbers, operators, names whose values are determined by the environment).
+Notice that the first step in evaluating calls for an evaluation. This is the procedure calling itself, which is referred to as _recursion_. Recursion allows us to break down a complex combination into its primitive expressions (numbers, operators, names whose values are determined by the environment).
 
 Notice also that this evaluation procedure does not apply to `define`, which is a definition rather than a combination. `define` is an example of a _special form_; each special form has its own evaluation procedure. The different expressions and their various evaluation rules make up the _syntax_ of a programming language.
 
@@ -81,7 +81,7 @@ To recap, we have described some ways of implementing the three mechanisms of a 
 
 - Abstraction is provided by associating names with values
 
-Another way of implementing means of abstraction is by giving operations themselves names to refer to them by. This is called a _procedure definition_. For example:
+Another way of implementing abstraction is by giving operations themselves names to refer to them by. This is called a _procedure definition_. For example:
 
 ```scheme
 (define (square x) (* x x))
