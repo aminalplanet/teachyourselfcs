@@ -100,3 +100,31 @@ Of course, we could now used `square` as an operator in the body of another proc
 ```
 
 This means of abstraction is far more powerful, as we will soon see.
+
+## 1.1.5 The Substitution Model for Procedure Application
+
+Over the course of this book, we will be presented with a sequence of increasingly elaborate models of how interpreters work. The first and simplest is the _substitution model_. The substitution model focuses on the "meaning" of procedure application. Continuing from above, let's consider the following example:
+
+```scheme
+(sum-of-squares 3 5)
+```
+
+The substitution model has us evaluate the body of the operator's procedure (`sum-of-squares`), replacing the formal parameters (`x` and `y`) with the values of operands (`3` and `5`, respectively). Thus, we would come up with the following:
+
+```scheme
+(+ (square 3) (square 5))
+```
+
+Continuing the substitution to the `squares` procedure, we would have
+
+```scheme
+(* 3 3)
+```
+
+and
+
+```scheme
+(* 5 5)
+```
+
+All formal parameters resolved, we can now evaluate the entire complex procedure. This set of steps (evaluating operator/operands and applying the resulting procedure to the resulting arguments) is called _applicative order evaluation_. An alternative method would be to not evaluate operands until their values are needed. This would be _normal order evaluation_. Normal order is not as efficient as applicative order; it tends to reevaluate procedures multiple times and can become quite complicated. In some cases, as we will see later, it can even give a different result than applicative order. However, it can also be a useful tool.
